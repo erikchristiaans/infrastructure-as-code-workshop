@@ -111,7 +111,7 @@ export const hostnames: any[] = [];
 for (const az of aws.getAvailabilityZones().names) {
     const server = new aws.ec2.Instance(`web-server-${az}`, {
         instanceType: "t2.micro",
-        securityGroups: [ sg.name ],
+        securityGroups: [ sg.id ],
         ami: ami,
         availabilityZone: az,
         userData: "#!/bin/bash\n"+
