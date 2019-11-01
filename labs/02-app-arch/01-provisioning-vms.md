@@ -38,7 +38,7 @@ Create the server. Notice it has a startup script that spins up a simple Python 
 ```typescript
 const server = new aws.ec2.Instance("web-server", {
     instanceType: "t2.micro",
-    securityGroups: [ sg.name ],
+    securityGroups: [ sg.id ],
     ami: ami,
     userData: "#!/bin/bash\n"+
         "echo 'Hello, World!' > index.html\n" +
@@ -111,7 +111,7 @@ export const hostnames: any[] = [];
 for (const az of aws.getAvailabilityZones().names) {
     const server = new aws.ec2.Instance(`web-server-${az}`, {
         instanceType: "t2.micro",
-        securityGroups: [ sg.name ],
+        securityGroups: [ sg.id ],
         ami: ami,
         availabilityZone: az,
         userData: "#!/bin/bash\n"+
@@ -239,7 +239,7 @@ export const hostnames: any[] = [];
 for (const az of aws.getAvailabilityZones().names) {
     const server = new aws.ec2.Instance(`web-server-${az}`, {
         instanceType: "t2.micro",
-        securityGroups: [ sg.name ],
+        securityGroups: [ sg.id ],
         ami: ami,
         availabilityZone: az,
         userData: "#!/bin/bash\n"+
